@@ -1,0 +1,2 @@
+Streamlit: https://ichwanr.streamlit.app/
+Github: https://github.com/irizkyw/Submission-Dicoding
