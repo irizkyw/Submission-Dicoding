@@ -63,14 +63,14 @@ with st.sidebar:
 with st.container():
     if page == 0:
         st.title('Banyaknya penyewaan hari aktivitas pada tahun 2011 s.d 2012')
-        data = pd.read_csv('./clean_dataDay.csv')
+        data = pd.read_csv('./dashboard/clean_dataDay.csv')
         data = sum_groupby(data,'workingday','cnt')
         data_table = data.rename(index={0:'Lainya', 1:'Hari Aktifitas(bekerja)'})
         st.table(data_table)
         format_Plotting(data, 'Banyaknya penyewaan hari aktivitas pada tahun 2011 s.d 2012', 'Tahun-Bulan', 'Banyaknya Penyewaan', data_thick=[0,1], label_thick=['Lainya', 'Hari Aktifitas(bekerja)'], thick_rotate=0)
     if page == 1:
         st.title('Bulan paling banyak penyewaan')
-        data = pd.read_csv('./clean_dataDay.csv')
+        data = pd.read_csv('./dashboard/clean_dataDay.csv')
         data = sum_groupby(data, ['yr', 'month'], 'cnt')
         
         data = data.sort_values(ascending=True).reset_index()
@@ -80,7 +80,7 @@ with st.container():
         format_plotting_YearMonth(data, 'Penyewaan bulanan 2011 s.d 2012', 'Tahun-Bulan', 'Jumlah Total (Jumlah cnt)', data_thick=data['yr'].astype(str) + '-' + data['month'].astype(str))
     if page == 2:
         st.title('Rata-Rata tertinggi penyewaan sepedah 2011 s.d 2012')
-        data = pd.read_csv('./clean_dataHour.csv')
+        data = pd.read_csv('./dashboard/clean_dataHour.csv')
         
         data_sum = data.groupby('hr')['cnt'].mean()
         # table
